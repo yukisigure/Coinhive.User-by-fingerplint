@@ -1,0 +1,1 @@
+# Coinhive.User-by-fingerplint
