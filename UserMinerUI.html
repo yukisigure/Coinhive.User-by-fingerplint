@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mining simple-ui</title>
+	<script src="https://authedmine.com/lib/simple-ui.min.js" defer></script>
+	<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+</head>
+<body>
+
+<div id="miner-ui"></div>
+
+<script>
+function getCanvasFingerprint() {
+  let canvas = document.createElement('canvas');
+  let ctx = canvas.getContext('2d');
+  const txt = navigator.userAgent;
+  ctx.font = "14px 'Arial'";
+  ctx.fillStyle = "#110";
+  ctx.fillRect(1,1, 800, 20);
+  ctx.fillStyle = "rgba(255, 255, 22, 0.8)";
+  ctx.fillText(txt, 2, 11);
+  ctx.fillStyle = "rgba(22, 255, 255, 0.8)";
+  ctx.fillText(txt, 4, 17);
+  return canvas.toDataURL();
+};
+
+// Your public Site key
+const site_key = 'KQFxWf0LVZURcSMPu9A5rJwnUdYLBwmc';
+const md5_result = md5( getCanvasFingerprint() )
+console.log("Your ID: "+ md5_result);
+
+document.getElementById('miner-ui').innerHTML =
+'<div class="coinhive-miner" style="width: 256px; height: 310px"\
+    data-user="'+ md5_result +'"\
+    data-key="'+ site_key +'">\
+    <em>Loading...</em>\
+</div>'
+</script>
+
+
+</html>
