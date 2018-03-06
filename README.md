@@ -1,1 +1,1 @@
-# Coinhive.User-by-fingerplint
+# Coinhive.User-by-fingerprint
